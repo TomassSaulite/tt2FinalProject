@@ -1,10 +1,5 @@
 from django import forms
-# from .models import Klients
 
-# class KlientsForm(forms.ModelForm):
-#     class Meta:
-#         model = Klients
-#         fields = ['first_name', 'last_name', 'email','country','password']
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(forms.ModelForm):

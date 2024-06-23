@@ -16,8 +16,6 @@ def success(request):
   template = loader.get_template('success.html')
   return HttpResponse(template.render())
 
-# myapp/views.py
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -32,7 +30,7 @@ def register(request):
             password = form.cleaned_data['password']
             User.objects.create_user(username=username, email=email, password=password)
             messages.success(request, 'User created successfully')
-            return redirect('success')  # Redirect to login or another page
+            return redirect('success')
     else:
         form = UserRegistrationForm()
 
