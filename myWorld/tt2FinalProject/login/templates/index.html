@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoodFood</title>
+    <link rel="icon" href="images/logo.png" type="logo">
+    <link rel="stylesheet" href="{% static 'login/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/navBar.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/body.css' %}">
+
+</head>
+<body>
+    <nav>
+        <div id="navbar">
+            <div id="logo" class="nav-item left">
+            <a href="index.html">
+                <img src="{% static 'login/images/logo.png' %}" alt="logo">
+            </a>
+            </div>
+            <div id="login" class="nav-item right">
+                <button class="login-button"><a href="{% url 'login' %}">Login</a></button>
+            </div>
+        </div>
+     </nav>
+
+    <article class="article">
+        <div class="container">
+            <h1>Get Your Favorite Food Delivered</h1>
+            <h2>Right to your doorstep</h2>
+            <p>Enter your address to find restaurants near you</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Enter your address">
+                <button>Find Restaurants</button>
+            </div>
+        </div>
+    </article>
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <img src="{% static 'login/images/stock.jpeg' %}" alt="Fast Delivery">
+                <h2>Fast Delivery</h2>
+                <p>Get your food delivered in under 30 minutes.</p>
+            </div>
+            <div class="feature">
+                <img src="{% static 'login/images/stock.jpeg' %}" alt="Wide Selection">
+                <h2>Wide Selection</h2>
+                <p>Choose from a wide range of restaurants and cuisines.</p>
+            </div>
+            <div class="feature">
+                <img src="{% static 'login/images/stock.jpeg' %}" alt="Easy Payment">
+                <h2>Easy Payment</h2>
+                <p>Pay with credit card, PayPal, or cash on delivery.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div>
+            <p>&copy; GoodFood. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
