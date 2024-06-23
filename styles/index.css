@@ -88,20 +88,3 @@ body {
     font-size: 16px;
     color: #6c757d;
 }
-
-.footer {
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.footer p {
-    margin: 0;
-    font-size: 14px;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}

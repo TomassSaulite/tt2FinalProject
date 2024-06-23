@@ -32,13 +32,13 @@
 }
 
 .login-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Lift effect on hover */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .login-button:active {
-    background-color: #004080; /* Even darker blue on click */
-    transform: translateY(0); /* No lift effect on click */
+    background-color: #004080;
+    transform: translateY(0);
 }
 
 .right{
