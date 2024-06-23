@@ -7,7 +7,7 @@
     padding-top:5px;
     min-height: 50px;
     max-height: 50px;
-    height:10vh;
+    height:12vh;
     width:auto;
     text-align: center;
     align-items: center;
@@ -48,4 +48,7 @@
 .left{
     float:left;
     padding-left: 10px;
+}
+a{
+    text-decoration: none;
 }
