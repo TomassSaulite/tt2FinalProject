@@ -1,14 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodFood</title>
-    <link rel="icon" href="images/logo.png" type="logo">
-    <link rel="stylesheet" href="styles/register.css">
-    <link rel="stylesheet" href="styles/navBar.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/body.css">
+    <link rel="icon" href="{% static 'login/images/logo.png' %}" type="logo">
+    <link rel="stylesheet" href="{% static 'login/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/body.css' %}">
 
 </head>
 <body>
@@ -27,23 +28,23 @@
 
     <div class="register-wrapper">
         <div class="container">
-            <h2>Register</h2>
-            <input type="text" placeholder="Name" required>
-            <input type="text" placeholder="Last Name" required>
-            <input type="text" placeholder="Username" required>
-            <input type="text" placeholder="Email" required>
-            <input type="text" placeholder="Country" required>
-            <input type="password" placeholder="Password" required>
-            <input type="password" placeholder="Confirm password" required>
-            <button>Register</button>
-            <a href="{% url 'login' %}" class="login-link">Already have an account? Login</a>
+            <h1>Register</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Register</button>
+                </form>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
         </div>
     </div>
 
 
-
-
-    
     <footer class="footer">
         <div>
             <p>&copy; GoodFood. All rights reserved.</p>
