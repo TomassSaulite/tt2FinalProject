@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'tt2FinalProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tt2db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '',  # Set to an empty string for localhost.
+        'PORT': '',       # Set to an empty string for the default port.
     }
 }
 
