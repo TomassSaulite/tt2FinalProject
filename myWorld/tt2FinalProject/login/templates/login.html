@@ -25,7 +25,31 @@
         </div>
      </nav>
 
-     <div class="login-wrapper">
+    <div class="login-wrapper">
+        <div class="container">
+            <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+         </div>
+    </div>
+     <!-- <div class="login-wrapper">
         <div class="container">
             <h2>Login</h2>
             <input type="text" placeholder="Username" required>
@@ -33,7 +57,7 @@
             <button>Login</button>
             <a href="{% url 'register' %}" class="register-link">Don't have an account? Register</a>
         </div>
-    </div>
+    </div> -->
 
     <footer class="footer">
         <div>

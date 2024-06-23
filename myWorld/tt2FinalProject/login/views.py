@@ -18,7 +18,6 @@ def success(request):
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib import messages
 from .forms import UserRegistrationForm
 
 def register(request):
@@ -35,6 +34,21 @@ def register(request):
         form = UserRegistrationForm()
 
     return render(request, 'register.html', {'form': form})
-  
-  
 
+
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib import messages
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return redirect('success')  # Redirect to home page or any other page
+        else:
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'login.html')
+    return render(request, 'login.html')
