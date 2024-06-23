@@ -19,19 +19,42 @@ body {
     text-align: center;
     align-items: center;
     position: relative;
-    background-color: red;
 }
 
 .nav-item{
     display: inline-block;
     height:50px;
 }
+.login-button {
+    background-color: #007BFF;
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.login-button:active {
+    background-color: #004080; /* Even darker blue on click */
+    transform: translateY(0); /* No lift effect on click */
+}
 
 .right{
     float:right;
+    padding-right: 10px;
 }
 .left{
-    float:left
+    float:left;
+    padding-left: 10px;
 }
 
 a{
