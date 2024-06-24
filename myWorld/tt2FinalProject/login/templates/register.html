@@ -44,21 +44,24 @@
         </div>
     </div>
 
-    <script>
-        function showForm() {
-            var userType = document.getElementById('user_type').value;
-            var formContainer = document.getElementById('form_container');
-    
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/get_form/?user_type=' + userType, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    formContainer.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
-    </script>
+
+<script>
+    function showForm() {
+        var userType = document.getElementById('user_type').value;
+        var formContainer = document.getElementById('form_container');
+
+        // Make an AJAX call to get the appropriate form fields
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get_form/?user_type=' + userType, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                formContainer.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+</script>
+
 
     <footer class="footer">
         <div>

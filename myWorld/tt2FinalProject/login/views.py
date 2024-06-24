@@ -30,6 +30,19 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
+def get_form(request):
+    user_type = request.GET.get('user_type')
+    if user_type == 'client':
+        form = ClientRegistrationForm()
+    else:
+        form = RestaurantRegistrationForm()
+
+    html = render_to_string('form_fields.html', {'form': form})
+    return HttpResponse(html)
+
 def login(request):
   template = loader.get_template('login.html')
   return HttpResponse(template.render())
