@@ -33,8 +33,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from .forms import CustomUserAuthenticationForm
 from django.shortcuts import render, redirect
-from django.utils import timezone
 from django.contrib.auth import get_user_model
+
+import datetime
     
 def custom_login_view(request):
     if request.method == 'POST':
@@ -47,7 +48,7 @@ def custom_login_view(request):
                 auth_login(request, user)
                 User = get_user_model()
                 user = User.objects.get(username=username)
-                user.last_login = timezone.now()
+                user.last_login = datetime.datetime.now()
                 user.save()
                 return redirect('index')
     else:
