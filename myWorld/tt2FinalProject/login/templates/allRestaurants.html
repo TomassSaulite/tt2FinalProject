@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoodFood</title>
+    <link rel="icon" href="{% static 'login/images/logo.png' %}" type="logo">
+    <link rel="stylesheet" href="{% static 'login/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/navBar.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/body.css' %}">
+
+</head>
+<body>
+    <nav>
+        <div id="navbar">
+            <div id="logo" class="nav-item left">
+            <a href="index.html">
+                <img src="{% static 'login/images/logo.png' %}" alt="logo">
+            </a>
+            </div>
+            <div id="login" class="nav-item right">
+                <a href="{% url 'login' %}"><button class="login-button">Login</button></a>
+            </div>
+        </div>
+     </nav>
+     
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div>
+            <p>&copy; GoodFood. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

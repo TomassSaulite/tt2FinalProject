@@ -1,5 +1,34 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import CustomUserCreationForm, ClientForm, RestaurantForm
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import ClientRegistrationForm, RestaurantRegistrationForm
+
+def register(request):
+    if request.method == 'POST':
+        user_type = request.POST.get('user_type')
+        if user_type == 'client':
+            form = ClientRegistrationForm(request.POST)
+        else:
+            form = RestaurantRegistrationForm(request.POST)
+
+        if form.is_valid():
+            user = form.save(commit=False)
+            if user_type == 'client':
+                user.is_client = True
+            else:
+                user.is_restaurant = True
+            user.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = ClientRegistrationForm()  # default form
+
+    return render(request, 'register.html', {'form': form})
 
 def login(request):
   template = loader.get_template('login.html')
@@ -16,39 +45,15 @@ def success(request):
   template = loader.get_template('success.html')
   return HttpResponse(template.render())
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from .forms import UserRegistrationForm
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            User.objects.create_user(username=username, email=email, password=password)
-            messages.success(request, 'User created successfully')
-            return redirect('success')
+def get_form(request):
+    user_type = request.GET.get('user_type')
+    if user_type == 'client':
+        form = ClientRegistrationForm()
     else:
-        form = UserRegistrationForm()
+        form = RestaurantRegistrationForm()
 
-    return render(request, 'register.html', {'form': form})
-
-
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login
-from django.contrib import messages
-
-def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            auth_login(request, user)
-            return redirect('success')
-        else:
-            messages.error(request, 'Invalid username or password')
-            return render(request, 'login.html')
-    return render(request, 'login.html')
+    html = render_to_string('form_fields.html', {'form': form})
+    return HttpResponse(html)

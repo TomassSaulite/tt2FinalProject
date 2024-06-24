@@ -16,7 +16,7 @@
         <div id="navbar">
            <div id="logo" class="nav-item left">
                 <a href="{% url 'index' %}">
-                    <img src="images/logo.png" alt="logo">
+                    <img src="{% static 'login/images/logo.png' %}" alt="logo">
                 </a>
             </div>
             <div id="login" class="nav-item right">
@@ -30,6 +30,7 @@
             <h1>Login</h1>
     <form method="post">
         {% csrf_token %}
+        
         <p>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
@@ -39,6 +40,7 @@
             <input type="password" name="password" id="password">
         </p>
         <button type="submit">Login</button>
+        <a href="{% url 'register' %}" class="register-link">Don't have an account? Register</a>
     </form>
     {% if messages %}
         <ul>
