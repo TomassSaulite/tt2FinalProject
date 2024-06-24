@@ -3,9 +3,11 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.CharField(max_length=15, required=False)
-    address = forms.CharField(widget=forms.Textarea, required=False)
+    name = forms.CharField(max_length=50, required=True)
+    lastName = forms.CharField(max_length=50, required=True)
+    email = forms.CharField(max_length=50, required=True)
+    country = forms.CharField(max_length=3, required=True)
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ('email', 'address',)
+        fields = UserCreationForm.Meta.fields + ('name', 'lastName','email','country',)
