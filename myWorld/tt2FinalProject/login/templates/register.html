@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,19 +29,14 @@
 
     <div class="register-wrapper">
         <div class="container">
-            <h2>Register</h2>
+            {% block content %}
+            <h2>Sign Up</h2>
             <form method="post">
                 {% csrf_token %}
-                <label for="user_type">I am a:</label>
-                <select id="user_type" name="user_type" onchange="showForm()">
-                    <option value="client">Client</option>
-                    <option value="restaurant">Restaurant</option>
-                </select>
-                <div id="form_container">
-                    {{ form.as_p }}
-                </div>
-                <button type="submit">Register</button>
+                {{ form.as_p }}
+                <button type="submit">Sign Up</button>
             </form>
+            {% endblock %}
         </div>
     </div>
 
@@ -50,7 +46,6 @@
         var userType = document.getElementById('user_type').value;
         var formContainer = document.getElementById('form_container');
 
-        // Make an AJAX call to get the appropriate form fields
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get_form/?user_type=' + userType, true);
         xhr.onreadystatechange = function () {
