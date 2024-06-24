@@ -25,3 +25,4 @@ def register(request):
 def success(request):
   template = loader.get_template('success.html')
   return HttpResponse(template.render())
+
