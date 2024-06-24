@@ -5,6 +5,7 @@ from .views import SignUpView
 urlpatterns = [
     path('', views.index, name='index'),
     path('register/', SignUpView.as_view(), name='register'),
-    path('login/', views.login, name='login'),
-    path('success/', views.success, name='success'),
+    path('login/', views.custom_login_view, name='login'),
+
+    path('regRest/', views.regRest, name='regRest'),
     ]

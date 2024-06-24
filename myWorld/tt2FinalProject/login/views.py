@@ -22,7 +22,34 @@ def index(request):
 def register(request):
   template = loader.get_template('register.html')
   return HttpResponse(template.render())
-def success(request):
-  template = loader.get_template('success.html')
+
+
+def regRest(request):
+  template = loader.get_template('regRest.html')
   return HttpResponse(template.render())
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from .forms import CustomUserAuthenticationForm
+from django.shortcuts import render, redirect
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+    
+def custom_login_view(request):
+    if request.method == 'POST':
+        form = CustomUserAuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                User = get_user_model()
+                user = User.objects.get(username=username)
+                user.last_login = timezone.now()
+                user.save()
+                return redirect('index')
+    else:
+        form = CustomUserAuthenticationForm()
+    return render(request, 'login.html', {'form': form})
