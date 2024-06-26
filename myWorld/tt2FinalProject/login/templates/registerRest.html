@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodFood</title>
     <link rel="icon" href="{% static 'login/images/logo.png' %}" type="logo">
-    <link rel="stylesheet" href="{% static 'login/css/register.css' %}">
-    <link rel="stylesheet" href="{% static 'login/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/navBar.css' %}">
     <link rel="stylesheet" href="{% static 'login/css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'login/css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/register.css' %}">
 
 </head>
 <body>
@@ -30,36 +29,19 @@
         </div>
      </nav>
 
-    <div class="register-wrapper">
+
+
+     <div class="register-wrapper">
         <div class="container">
-            {% block content %}
-            <h2>Sign Up</h2>
+            <h2>Register Restaurant</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Sign Up</button>
-                <a href="{% url 'login' %}">Already have an account? Login!</a>
+                <button type="submit">Register</button>
+                <a href="{% url 'loginRestaurant' %}">Already have an account? Login!</a>
             </form>
-            {% endblock %}
         </div>
     </div>
-
-
-<script>
-    function showForm() {
-        var userType = document.getElementById('user_type').value;
-        var formContainer = document.getElementById('form_container');
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/get_form/?user_type=' + userType, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                formContainer.innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-</script>
 
 
     <footer class="footer">

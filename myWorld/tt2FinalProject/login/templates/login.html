@@ -14,14 +14,17 @@
 <body>
     <nav>
         <div id="navbar">
-           <div id="logo" class="nav-item left">
-                <a href="{% url 'index' %}">
-                    <img src="{% static 'login/images/logo.png' %}" alt="logo">
-                </a>
+            <div id="logo" class="nav-item left">
+            <a href="index.html">
+                <img src="{% static 'login/images/logo.png' %}" alt="logo">
+            </a>
+            </div>
+            <div id="regRest" class="nav-item">
+                <a href="{% url 'registerRestaurant' %}"><button class="login-button">Work with us!</button></a>
             </div>
             <div id="login" class="nav-item right">
                 <a href="{% url 'login' %}"><button class="login-button">Login</button></a>
-           </div>
+            </div>
         </div>
      </nav>
 
@@ -32,6 +35,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Login</button>
+                <a href="{% url 'register' %}">Don't have an account? Register!</a>
             </form>
          </div>
     </div>
